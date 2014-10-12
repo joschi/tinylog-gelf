@@ -340,7 +340,7 @@ public final class GelfWriter implements Writer {
             final StringBuilder stackTraceBuilder = new StringBuilder();
             for (StackTraceElement stackTraceElement : throwable.getStackTrace()) {
                 new Formatter(stackTraceBuilder)
-                        .format("%s.%s(%s:%d)\n",
+                        .format("%s.%s(%s:%d)%n",
                                 stackTraceElement.getClassName(), stackTraceElement.getMethodName(),
                                 stackTraceElement.getFileName(), stackTraceElement.getLineNumber());
             }
