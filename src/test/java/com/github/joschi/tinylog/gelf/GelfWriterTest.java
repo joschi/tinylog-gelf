@@ -83,12 +83,12 @@ public class GelfWriterTest {
         assertThat(additionalFields.isEmpty(), is(false));
         assertThat((String) additionalFields.get("processId"), equalTo("TEST-processId"));
         assertThat((String) additionalFields.get("threadName"), equalTo("TEST-thread"));
-        assertThat((int) additionalFields.get("threadPriority"), equalTo(1));
+        assertThat((Integer) additionalFields.get("threadPriority"), equalTo(1));
         assertThat((String) additionalFields.get("threadGroup"), equalTo("TEST-threadGroup"));
         assertThat((String) additionalFields.get("sourceClassName"), equalTo("TEST-ClassName"));
         assertThat((String) additionalFields.get("sourceMethodName"), equalTo("TEST-MethodName"));
         assertThat((String) additionalFields.get("sourceFileName"), equalTo("TEST-FileName"));
-        assertThat((int) additionalFields.get("sourceLineNumber"), equalTo(42));
+        assertThat((Integer) additionalFields.get("sourceLineNumber"), equalTo(42));
         assertThat((String) additionalFields.get("exceptionMessage"), equalTo("BOOM!"));
         assertThat((String) additionalFields.get("exceptionClass"), equalTo(RuntimeException.class.getCanonicalName()));
         assertThat((String) additionalFields.get("exceptionStackTrace"), startsWith(this.getClass().getCanonicalName()));
