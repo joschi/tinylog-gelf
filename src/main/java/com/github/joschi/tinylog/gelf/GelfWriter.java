@@ -7,7 +7,7 @@ import org.graylog2.gelfclient.GelfTransports;
 import org.graylog2.gelfclient.transport.GelfTransport;
 import org.pmw.tinylog.Configuration;
 import org.pmw.tinylog.Level;
-import org.pmw.tinylog.writers.LogEntry;
+import org.pmw.tinylog.LogEntry;
 import org.pmw.tinylog.writers.LogEntryValue;
 import org.pmw.tinylog.writers.PropertiesSupport;
 import org.pmw.tinylog.writers.Property;
@@ -297,7 +297,8 @@ public final class GelfWriter implements Writer {
     }
 
     void write(final GelfTransport gelfClient, final LogEntry logEntry) throws Exception {
-        final GelfMessageBuilder messageBuilder = new GelfMessageBuilder(logEntry.getRenderedLogEntry(), hostname)
+        final String message = logEntry.getRenderedLogEntry() == null ? logEntry.getMessage() : logEntry.getRenderedLogEntry();
+        final GelfMessageBuilder messageBuilder = new GelfMessageBuilder(message, hostname)
                 .timestamp(logEntry.getDate().getTime() / 1000d)
                 .level(toGelfMessageLevel(logEntry.getLevel()))
                 .additionalFields(staticFields);
@@ -348,7 +349,7 @@ public final class GelfWriter implements Writer {
             messageBuilder.additionalField("exceptionClass", throwable.getClass().getCanonicalName());
             messageBuilder.additionalField("exceptionMessage", throwable.getMessage());
             messageBuilder.additionalField("exceptionStackTrace", stackTraceBuilder.toString());
-            messageBuilder.fullMessage(logEntry.getRenderedLogEntry() + "\n\n" + stackTraceBuilder.toString());
+            messageBuilder.fullMessage(message + "\n\n" + stackTraceBuilder.toString());
         }
 
         gelfClient.send(messageBuilder.build());

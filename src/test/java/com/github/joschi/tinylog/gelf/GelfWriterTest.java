@@ -8,9 +8,9 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.pmw.tinylog.Configurator;
 import org.pmw.tinylog.Level;
+import org.pmw.tinylog.LogEntry;
 import org.pmw.tinylog.Logger;
 import org.pmw.tinylog.writers.ConsoleWriter;
-import org.pmw.tinylog.writers.LogEntry;
 import org.pmw.tinylog.writers.LogEntryValue;
 import org.pmw.tinylog.writers.Writer;
 
@@ -65,7 +65,7 @@ public class GelfWriterTest {
 
         final LogEntry logEntry = new LogEntry(now, "TEST-processId", thread,
                 "TEST-ClassName", "TEST-MethodName", "TEST-FileName", 42, Level.INFO,
-                "Test {0}", exception, "Test 123");
+                "Test 123", exception);
 
         gelfWriter.write(client, logEntry);
 
@@ -123,19 +123,19 @@ public class GelfWriterTest {
 
         Logger.trace("Test");
         Logger.trace(exception, "Test");
-        Logger.trace("Test {0}", 1234);
+        Logger.trace("Test {}", 1234);
         Logger.debug("Test");
         Logger.debug(exception, "Test");
-        Logger.debug("Test {0}", 1234);
+        Logger.debug("Test {}", 1234);
         Logger.info("Test");
         Logger.info(exception, "Test");
-        Logger.info("Test {0}", 1234);
+        Logger.info("Test {}", 1234);
         Logger.warn("Test");
         Logger.warn(exception, "Test");
-        Logger.warn("Test {0}", 1234);
+        Logger.warn("Test {}", 1234);
         Logger.error("Test");
         Logger.error(exception, "Test");
-        Logger.error("Test {0}", 1234);
+        Logger.error("Test {}", 1234);
     }
 
     @Test
@@ -148,18 +148,18 @@ public class GelfWriterTest {
 
         Logger.trace("Test");
         Logger.trace(exception, "Test");
-        Logger.trace("Test {0}", 1234);
+        Logger.trace("Test {}", 1234);
         Logger.debug("Test");
         Logger.debug(exception, "Test");
-        Logger.debug("Test {0}", 1234);
+        Logger.debug("Test {}", 1234);
         Logger.info("Test");
         Logger.info(exception, "Test");
-        Logger.info("Test {0}", 1234);
+        Logger.info("Test {}", 1234);
         Logger.warn("Test");
         Logger.warn(exception, "Test");
-        Logger.warn("Test {0}", 1234);
+        Logger.warn("Test {}", 1234);
         Logger.error("Test");
         Logger.error(exception, "Test");
-        Logger.error("Test {0}", 1234);
+        Logger.error("Test {}", 1234);
     }
 }
