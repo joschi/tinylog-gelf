@@ -131,6 +131,7 @@
                     <message>Creating site for ${project.name} ${project.version}</message>
                     <merge>true</merge>
                     <noJekyll>true</noJekyll>
+                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>
