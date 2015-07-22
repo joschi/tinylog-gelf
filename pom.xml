@@ -65,7 +65,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
-        <tinylog.version>1.0-rc-1</tinylog.version>
+        <tinylog.version>1.0</tinylog.version>
         <gelfclient.version>1.0.0</gelfclient.version>
     </properties>
 
