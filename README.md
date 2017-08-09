@@ -1,3 +1,5 @@
+# This project has been deprecated.
+
 tinylog-gelf
 ============
 [![Build Status](https://travis-ci.org/joschi/tinylog-gelf.svg?branch=master)](https://travis-ci.org/joschi/tinylog-gelf)
